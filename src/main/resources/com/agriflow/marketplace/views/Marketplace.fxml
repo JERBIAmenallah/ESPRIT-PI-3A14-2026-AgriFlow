@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+    AgriFlow - Marketplace de Location
+    Interface principale pour la gestion des équipements agricoles
+    
+    @author AgriFlow Team
+    @version 1.0
+-->
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.agriflow.marketplace.controllers.MarketplaceController"
+            stylesheets="@styles.css">
+
+    <!-- ================================================================= -->
+    <!-- En-tête de l'application                                         -->
+    <!-- ================================================================= -->
+    <top>
+        <VBox styleClass="header" spacing="5">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Text text="🚜 AgriFlow Marketplace" styleClass="title"/>
+            <Text text="Location de matériel agricole entre agriculteurs" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- ================================================================= -->
+    <!-- Zone principale avec TableView et Formulaire                      -->
+    <!-- ================================================================= -->
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- Liste des équipements (TableView) -->
+            <VBox HBox.hgrow="ALWAYS" spacing="10">
+                <Label text="📋 Liste des équipements disponibles" styleClass="section-title"/>
+                
+                <TableView fx:id="tableEquipements" VBox.vgrow="ALWAYS" styleClass="equipment-table">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colNom" text="Nom" prefWidth="180"/>
+                        <TableColumn fx:id="colType" text="Type" prefWidth="120"/>
+                        <TableColumn fx:id="colPrix" text="Prix/Jour (€)" prefWidth="100"/>
+                        <TableColumn fx:id="colDisponibilite" text="Disponible" prefWidth="90"/>
+                        <TableColumn fx:id="colAgriculteur" text="Propriétaire" prefWidth="100"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucun équipement trouvé"/>
+                    </placeholder>
+                </TableView>
+                
+                <!-- Boutons d'action pour la liste -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnRefresh" text="🔄 Actualiser" onAction="#handleRefresh" styleClass="btn-secondary"/>
+                    <Button fx:id="btnDelete" text="🗑️ Supprimer" onAction="#handleDelete" styleClass="btn-danger"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Formulaire d'ajout/modification -->
+            <VBox spacing="15" styleClass="form-container" minWidth="300">
+                <Label text="➕ Ajouter un équipement" styleClass="section-title"/>
+                
+                <!-- Champ Nom -->
+                <VBox spacing="5">
+                    <Label text="Nom de l'équipement:" styleClass="form-label"/>
+                    <TextField fx:id="txtNom" promptText="Ex: Tracteur John Deere"/>
+                </VBox>
+                
+                <!-- Champ Type -->
+                <VBox spacing="5">
+                    <Label text="Type de matériel:" styleClass="form-label"/>
+                    <ComboBox fx:id="comboType" promptText="Sélectionnez un type" maxWidth="Infinity">
+                        <items>
+                            <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Tracteur"/>
+                                <String fx:value="Moissonneuse"/>
+                                <String fx:value="Semoir"/>
+                                <String fx:value="Pulvérisateur"/>
+                                <String fx:value="Remorque"/>
+                                <String fx:value="Charrue"/>
+                                <String fx:value="Faucheuse"/>
+                                <String fx:value="Autre"/>
+                            </javafx.collections.FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+                
+                <!-- Champ Prix -->
+                <VBox spacing="5">
+                    <Label text="Prix de location (€/jour):" styleClass="form-label"/>
+                    <TextField fx:id="txtPrix" promptText="Ex: 150.00"/>
+                </VBox>
+                
+                <!-- Champ Disponibilité -->
+                <VBox spacing="5">
+                    <Label text="Disponibilité:" styleClass="form-label"/>
+                    <CheckBox fx:id="checkDisponible" text="Équipement disponible à la location" selected="true"/>
+                </VBox>
+                
+                <!-- Champ ID Agriculteur -->
+                <VBox spacing="5">
+                    <Label text="ID Propriétaire (Agriculteur):" styleClass="form-label"/>
+                    <TextField fx:id="txtAgriculteur" promptText="Ex: 1"/>
+                </VBox>
+                
+                <!-- Boutons du formulaire -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="btnAjouter" text="✅ Ajouter" onAction="#handleAjouter" styleClass="btn-primary"/>
+                    <Button fx:id="btnModifier" text="✏️ Modifier" onAction="#handleModifier" styleClass="btn-warning"/>
+                    <Button fx:id="btnClear" text="🧹 Effacer" onAction="#handleClear" styleClass="btn-secondary"/>
+                </HBox>
+                
+                <!-- Zone de message -->
+                <Label fx:id="lblMessage" styleClass="message-label" wrapText="true"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- ================================================================= -->
+    <!-- Pied de page                                                      -->
+    <!-- ================================================================= -->
+    <bottom>
+        <HBox styleClass="footer" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label text="© 2026 AgriFlow - Module Marketplace de Location"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
