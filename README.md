@@ -22,7 +22,8 @@ A JavaFX-based Peer-to-Peer marketplace for agricultural equipment and products,
 
 ### Technical Stack
 - **Framework**: JavaFX 17
-- **Database**: MySQL 8.0
+- **Database**: MySQL 8.0+
+- **JDBC Driver**: MySQL Connector/J 8.3.0 (security patched)
 - **Build Tool**: Maven
 - **Architecture**: MVC with Service Layer
 - **Design Patterns**: Generic CRUD Interface (`IService<T>`)

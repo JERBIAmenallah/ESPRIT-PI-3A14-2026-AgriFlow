@@ -148,7 +148,7 @@ Successfully implemented a complete Peer-to-Peer (P2P) Marketplace Module for th
     <dependency>javafx-controls</dependency>
     <dependency>javafx-fxml</dependency>
     
-    <!-- MySQL 8.0.33 -->
+    <!-- MySQL 8.3.0 (Security patched) -->
     <dependency>mysql-connector-j</dependency>
     
     <!-- JUnit 5.9.3 -->
@@ -156,6 +156,8 @@ Successfully implemented a complete Peer-to-Peer (P2P) Marketplace Module for th
     <dependency>junit-jupiter-engine</dependency>
 </dependencies>
 ```
+
+**Security Note:** MySQL Connector version 8.3.0 is used to address known vulnerabilities in earlier versions (CVE affecting versions < 8.2.0).
 
 ---
 
