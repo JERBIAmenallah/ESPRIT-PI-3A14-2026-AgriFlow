@@ -40,11 +40,11 @@
         <TextField fx:id="locationField" GridPane.rowIndex="5" GridPane.columnIndex="1" 
                    promptText="Localisation"/>
         
-        <Label text="Début dispo:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <Label text="Disponibilité début:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
         <DatePicker fx:id="availabilityStartPicker" GridPane.rowIndex="6" GridPane.columnIndex="1" 
                     promptText="Date de début" maxWidth="Infinity"/>
         
-        <Label text="Fin dispo:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <Label text="Disponibilité fin:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
         <DatePicker fx:id="availabilityEndPicker" GridPane.rowIndex="7" GridPane.columnIndex="1" 
                     promptText="Date de fin" maxWidth="Infinity"/>
         

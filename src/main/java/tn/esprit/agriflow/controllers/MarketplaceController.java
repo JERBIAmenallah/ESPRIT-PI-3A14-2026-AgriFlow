@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.agriflow.models.Annonce;
 import tn.esprit.agriflow.models.enums.CategorieAnnonce;
+import tn.esprit.agriflow.models.enums.StatutAnnonce;
 import tn.esprit.agriflow.models.enums.TypeAnnonce;
 import tn.esprit.agriflow.services.AnnonceService;
 
@@ -205,7 +206,7 @@ public class MarketplaceController {
         Label category = new Label(annonce.getCategory().getDisplayName());
         Label location = new Label(annonce.getLocation());
         Label status = new Label(annonce.getStatus().getDisplayName());
-        status.setStyle("-fx-text-fill: " + (annonce.getStatus().name().equals("DISPONIBLE") ? "green" : "red"));
+        status.setStyle("-fx-text-fill: " + (annonce.getStatus() == StatutAnnonce.DISPONIBLE ? "green" : "red"));
         
         Button viewButton = new Button("Voir détails");
         viewButton.setOnAction(e -> openAnnonceDetail(annonce));

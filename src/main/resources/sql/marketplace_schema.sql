@@ -57,6 +57,8 @@ CREATE TABLE reservation (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Sample data for testing (optional)
+-- NOTE: In production, passwords MUST be hashed using BCrypt, Argon2, or similar
+-- These are plain text passwords for TESTING ONLY
 -- Insert sample user
 INSERT INTO user (username, email, password, full_name, phone) 
 VALUES 

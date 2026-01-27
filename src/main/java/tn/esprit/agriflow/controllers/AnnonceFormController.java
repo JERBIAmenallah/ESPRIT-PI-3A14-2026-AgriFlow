@@ -117,7 +117,11 @@ public class AnnonceFormController {
         }
         
         try {
-            Double.parseDouble(priceField.getText().trim());
+            double price = Double.parseDouble(priceField.getText().trim());
+            if (price <= 0) {
+                showAlert("Validation", "Le prix doit être supérieur à zéro", Alert.AlertType.WARNING);
+                return false;
+            }
         } catch (NumberFormatException e) {
             showAlert("Validation", "Prix invalide", Alert.AlertType.WARNING);
             return false;

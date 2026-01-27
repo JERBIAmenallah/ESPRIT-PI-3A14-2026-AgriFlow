@@ -3,6 +3,7 @@ package tn.esprit.agriflow.services;
 import tn.esprit.agriflow.models.Reservation;
 import tn.esprit.agriflow.models.enums.StatutAnnonce;
 import tn.esprit.agriflow.models.enums.StatutReservation;
+import tn.esprit.agriflow.models.enums.TypeAnnonce;
 import tn.esprit.agriflow.utils.DatabaseConnection;
 
 import java.sql.*;
@@ -45,7 +46,7 @@ public class ReservationService implements IService<Reservation> {
                     // This is P2P logic - direct transaction
                     var annonce = annonceService.getById(reservation.getAnnonceId());
                     if (annonce != null) {
-                        StatutAnnonce newStatus = annonce.getType().name().equals("LOCATION") ? 
+                        StatutAnnonce newStatus = annonce.getType() == TypeAnnonce.LOCATION ? 
                                                  StatutAnnonce.LOUE : StatutAnnonce.VENDU;
                         annonceService.updateStatus(reservation.getAnnonceId(), newStatus);
                     }
@@ -68,6 +69,7 @@ public class ReservationService implements IService<Reservation> {
             try {
                 connection.rollback();
             } catch (SQLException ex) {
+                System.err.println("Error during rollback: " + ex.getMessage());
                 ex.printStackTrace();
             }
             System.err.println("Error adding reservation: " + e.getMessage());
@@ -77,6 +79,7 @@ public class ReservationService implements IService<Reservation> {
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException e) {
+                System.err.println("Error resetting autoCommit: " + e.getMessage());
                 e.printStackTrace();
             }
         }

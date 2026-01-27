@@ -86,9 +86,19 @@ mysql -u root -p agriflow < src/main/resources/sql/marketplace_schema.sql
 
 3. Configure database connection in `DatabaseConnection.java` if needed:
 ```java
+// Uses environment variables for security:
+// DB_URL, DB_USERNAME, DB_PASSWORD
+// Or defaults to:
 private static final String URL = "jdbc:mysql://localhost:3306/agriflow";
 private static final String USERNAME = "root";
 private static final String PASSWORD = "";
+```
+
+**For production:** Set environment variables:
+```bash
+export DB_URL="jdbc:mysql://localhost:3306/agriflow"
+export DB_USERNAME="your_db_user"
+export DB_PASSWORD="your_secure_password"
 ```
 
 ### Build & Run
@@ -159,6 +169,8 @@ Sample data is included in the schema file for testing:
 Default credentials (for testing):
 - Username: farmer1 / farmer2
 - Password: password123
+
+**IMPORTANT:** These are plain text passwords for TESTING ONLY. In production, implement proper password hashing (BCrypt, Argon2) and secure authentication.
 
 ## Future Enhancements
 - Image upload and storage

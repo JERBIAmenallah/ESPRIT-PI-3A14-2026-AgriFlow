@@ -12,10 +12,13 @@ public class DatabaseConnection {
     private static DatabaseConnection instance;
     private Connection connection;
     
-    // Database configuration
-    private static final String URL = "jdbc:mysql://localhost:3306/agriflow";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    // Database configuration - should be loaded from environment variables or config file
+    private static final String URL = System.getenv("DB_URL") != null ? 
+                                     System.getenv("DB_URL") : "jdbc:mysql://localhost:3306/agriflow";
+    private static final String USERNAME = System.getenv("DB_USERNAME") != null ? 
+                                          System.getenv("DB_USERNAME") : "root";
+    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? 
+                                          System.getenv("DB_PASSWORD") : "";
     
     // Private constructor for singleton
     private DatabaseConnection() {

@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import tn.esprit.agriflow.models.Annonce;
 import tn.esprit.agriflow.models.Reservation;
 import tn.esprit.agriflow.models.enums.StatutAnnonce;
+import tn.esprit.agriflow.models.enums.TypeAnnonce;
 import tn.esprit.agriflow.services.AnnonceService;
 import tn.esprit.agriflow.services.ReservationService;
 
@@ -123,7 +124,7 @@ public class AnnonceDetailController {
     
     @FXML
     private void handleReserve() {
-        if (annonce.getType().name().equals("LOCATION")) {
+        if (annonce.getType() == TypeAnnonce.LOCATION) {
             // Rental - need dates
             if (startDatePicker.getValue() == null || endDatePicker.getValue() == null) {
                 showAlert("Validation", "Veuillez sélectionner les dates de location", Alert.AlertType.WARNING);
