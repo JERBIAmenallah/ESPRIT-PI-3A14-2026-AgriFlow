@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.agriflow.controllers.AnnonceDetailController"
+      spacing="15" style="-fx-padding: 20;" prefHeight="550.0" prefWidth="600.0">
+    
+    <Label fx:id="titleLabel" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+    
+    <HBox spacing="20">
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label fx:id="priceLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: green;"/>
+            <Label fx:id="typeLabel"/>
+            <Label fx:id="categoryLabel"/>
+            <Label fx:id="locationLabel"/>
+            <Label fx:id="statusLabel"/>
+            <Label fx:id="availabilityLabel" style="-fx-font-style: italic;"/>
+        </VBox>
+    </HBox>
+    
+    <Separator/>
+    
+    <VBox spacing="10">
+        <Label text="Description:" style="-fx-font-weight: bold;"/>
+        <TextArea fx:id="descriptionArea" editable="false" wrapText="true" 
+                  prefRowCount="6" style="-fx-background-color: #f9f9f9;"/>
+    </VBox>
+    
+    <Separator/>
+    
+    <VBox spacing="10">
+        <Label text="Réserver cette annonce:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Date de début:"/>
+                <DatePicker fx:id="startDatePicker" promptText="Début"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Date de fin:"/>
+                <DatePicker fx:id="endDatePicker" promptText="Fin"/>
+            </VBox>
+        </HBox>
+        
+        <Label fx:id="totalPriceLabel" style="-fx-font-weight: bold; -fx-text-fill: green;"/>
+    </VBox>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="reserveButton" text="Réserver" onAction="#handleReserve"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 120; -fx-font-size: 14px;"/>
+        <Button fx:id="closeButton" text="Fermer" onAction="#handleClose"
+                style="-fx-min-width: 100;"/>
+    </HBox>
+</VBox>
