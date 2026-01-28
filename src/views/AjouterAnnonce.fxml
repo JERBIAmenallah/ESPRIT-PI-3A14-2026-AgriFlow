@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.AjouterAnnonceController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #f5f5f5;">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Button text="← Retour" onAction="#handleRetour" 
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-cursor: hand;"/>
+        <Label text="➕ Nouvelle Annonce" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <!-- Formulaire -->
+    <HBox spacing="30">
+        <!-- Colonne gauche -->
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+            <Label text="📝 Informations de l'annonce" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <VBox spacing="5">
+                <Label text="Titre *"/>
+                <TextField fx:id="titreField" promptText="Ex: Tracteur John Deere 5075E à louer" style="-fx-pref-height: 40;"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Description"/>
+                <TextArea fx:id="descriptionArea" promptText="Décrivez votre matériel ou produit..." prefRowCount="4"/>
+            </VBox>
+            
+            <HBox spacing="15">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Type *"/>
+                    <ComboBox fx:id="typeCombo" promptText="Sélectionner..." prefWidth="1000"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Prix (TND) *"/>
+                    <TextField fx:id="prixField" promptText="0.00" style="-fx-pref-height: 40;"/>
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="15">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Localisation *"/>
+                    <ComboBox fx:id="localisationCombo" promptText="Gouvernorat..." prefWidth="1000"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Date disponibilité"/>
+                    <DatePicker fx:id="dateDispoField" prefWidth="1000"/>
+                </VBox>
+            </HBox>
+        </VBox>
+        
+        <!-- Colonne droite - Image -->
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 10;" prefWidth="300">
+            <Label text="📷 Photo" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <StackPane style="-fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-min-height: 200;" 
+                       onMouseClicked="#handleSelectImage">
+                <ImageView fx:id="imagePreview" fitWidth="250" fitHeight="180" preserveRatio="true"/>
+                <Label fx:id="imagePlaceholder" text="📷 Cliquez pour ajouter une image" 
+                       style="-fx-text-fill: #999;"/>
+            </StackPane>
+            
+            <Label fx:id="imagePathLabel" text="" style="-fx-text-fill: #666; -fx-font-size: 11px;" wrapText="true"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Boutons -->
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#handleRetour"
+                style="-fx-background-color: #e0e0e0; -fx-pref-width: 120; -fx-pref-height: 40; -fx-cursor: hand;"/>
+        <Button text="✅ Publier l'annonce" onAction="#handlePublier"
+                style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-pref-width: 180; -fx-pref-height: 40; -fx-cursor: hand;"/>
+    </HBox>
+    
+    <!-- Message d'erreur/succès -->
+    <Label fx:id="messageLabel" text="" style="-fx-font-size: 14px;"/>
+</VBox>

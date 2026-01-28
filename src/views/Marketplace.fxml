@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.MarketplaceController"
+            style="-fx-background-color: #f5f5f5;">
+    
+    <!-- HEADER -->
+    <top>
+        <VBox style="-fx-background-color: linear-gradient(to right, #2e7d32, #66bb6a); -fx-padding: 20;">
+            <Label text="🌾 AGRIFLOW - Marketplace" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Location de Matériel &amp; Vente de Produits Agricoles" 
+                   style="-fx-text-fill: #e8f5e9; -fx-font-size: 14px;"/>
+        </VBox>
+    </top>
+    
+    <!-- SIDEBAR - Filtres -->
+    <left>
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-min-width: 250;">
+            <Label text="🔍 Filtres" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <Separator/>
+            
+            <!-- Recherche -->
+            <VBox spacing="5">
+                <Label text="Rechercher"/>
+                <TextField fx:id="searchField" promptText="Mot-clé..." style="-fx-pref-height: 35;"/>
+            </VBox>
+            
+            <!-- Type -->
+            <VBox spacing="5">
+                <Label text="Type de matériel"/>
+                <ComboBox fx:id="typeCombo" promptText="Tous les types" prefWidth="200"/>
+            </VBox>
+            
+            <!-- Localisation -->
+            <VBox spacing="5">
+                <Label text="Localisation"/>
+                <ComboBox fx:id="localisationCombo" promptText="Toute la Tunisie" prefWidth="200"/>
+            </VBox>
+            
+            <!-- Prix Max -->
+            <VBox spacing="5">
+                <Label text="Prix maximum (TND)"/>
+                <Slider fx:id="prixSlider" min="0" max="1000" value="500" showTickLabels="true"/>
+                <Label fx:id="prixLabel" text="500 TND"/>
+            </VBox>
+            
+            <Button text="🔎 Rechercher" onAction="#handleSearch" 
+                    style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-pref-width: 200; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            
+            <Separator/>
+            
+            <Button text="➕ Nouvelle Annonce" onAction="#handleNouvelleAnnonce"
+                    style="-fx-background-color: #1565c0; -fx-text-fill: white; -fx-pref-width: 200; -fx-pref-height: 40; -fx-cursor: hand;"/>
+            
+            <Button text="📋 Mes Annonces" onAction="#handleMesAnnonces"
+                    style="-fx-background-color: #6a1b9a; -fx-text-fill: white; -fx-pref-width: 200; -fx-pref-height: 40; -fx-cursor: hand;"/>
+        </VBox>
+    </left>
+    
+    <!-- CONTENU PRINCIPAL - Liste des annonces -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="📦 Annonces Disponibles" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                <Label fx:id="countLabel" text="(0 résultats)" style="-fx-text-fill: #666;"/>
+            </HBox>
+            
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                <FlowPane fx:id="annoncesContainer" hgap="15" vgap="15" style="-fx-padding: 10;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+    
+</BorderPane>
