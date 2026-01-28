@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.agriflow.controllers.AnnonceFormController"
+      spacing="15" style="-fx-padding: 20;" prefHeight="600.0" prefWidth="500.0">
+    
+    <Label text="Formulaire d'Annonce" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <GridPane hgap="10" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="120"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        
+        <Label text="Titre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1" 
+                   promptText="Titre de l'annonce"/>
+        
+        <Label text="Description:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextArea fx:id="descriptionArea" GridPane.rowIndex="1" GridPane.columnIndex="1" 
+                  promptText="Description détaillée" prefRowCount="4"/>
+        
+        <Label text="Prix (TND):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1" 
+                   promptText="Prix"/>
+        
+        <Label text="Type:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="typeComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1" 
+                  promptText="Sélectionner le type" maxWidth="Infinity"/>
+        
+        <Label text="Catégorie:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="categoryComboBox" GridPane.rowIndex="4" GridPane.columnIndex="1" 
+                  promptText="Sélectionner la catégorie" maxWidth="Infinity"/>
+        
+        <Label text="Localisation:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="locationField" GridPane.rowIndex="5" GridPane.columnIndex="1" 
+                   promptText="Localisation"/>
+        
+        <Label text="Disponibilité début:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="availabilityStartPicker" GridPane.rowIndex="6" GridPane.columnIndex="1" 
+                    promptText="Date de début" maxWidth="Infinity"/>
+        
+        <Label text="Disponibilité fin:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="availabilityEndPicker" GridPane.rowIndex="7" GridPane.columnIndex="1" 
+                    promptText="Date de fin" maxWidth="Infinity"/>
+        
+        <Label text="Image:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <HBox spacing="5" GridPane.rowIndex="8" GridPane.columnIndex="1">
+            <TextField fx:id="imagePathField" promptText="Chemin de l'image" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="browseImageButton" text="Parcourir..." onAction="#handleBrowseImage"/>
+        </HBox>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="saveButton" text="Enregistrer" onAction="#handleSave" 
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 100;"/>
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel" 
+                style="-fx-min-width: 100;"/>
+    </HBox>
+</VBox>

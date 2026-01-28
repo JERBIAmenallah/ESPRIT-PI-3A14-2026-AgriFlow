@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tn.esprit.agriflow.controllers.MarketplaceController"
+            prefHeight="600.0" prefWidth="900.0">
+    
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="AgriFlow Marketplace" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            
+            <!-- Search filters -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Rechercher..." prefWidth="200"/>
+                <ComboBox fx:id="typeComboBox" promptText="Type" prefWidth="120"/>
+                <ComboBox fx:id="categoryComboBox" promptText="Catégorie" prefWidth="150"/>
+                <TextField fx:id="minPriceField" promptText="Prix min" prefWidth="100"/>
+                <TextField fx:id="maxPriceField" promptText="Prix max" prefWidth="100"/>
+                <TextField fx:id="locationField" promptText="Localisation" prefWidth="120"/>
+                <Button fx:id="searchButton" text="Rechercher" onAction="#handleSearch" 
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            </HBox>
+            
+            <!-- Action buttons -->
+            <HBox spacing="10">
+                <Button fx:id="addAnnonceButton" text="+ Nouvelle Annonce" onAction="#handleAddAnnonce"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button fx:id="myAnnoncesButton" text="Mes Annonces" onAction="#handleMyAnnonces"/>
+                <Button fx:id="myReservationsButton" text="Mes Réservations" onAction="#handleMyReservations"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: white;">
+            <GridPane fx:id="annoncesGrid" hgap="15" vgap="15" style="-fx-padding: 20;">
+            </GridPane>
+        </ScrollPane>
+    </center>
+</BorderPane>

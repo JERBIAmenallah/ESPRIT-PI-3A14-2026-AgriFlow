@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.agriflow.controllers.MesReservationsController"
+      spacing="15" style="-fx-padding: 20;" prefHeight="500.0" prefWidth="800.0">
+    
+    <Label text="Mes Réservations" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <TableView fx:id="reservationsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="annonceIdColumn" text="Annonce ID" prefWidth="100"/>
+            <TableColumn fx:id="startDateColumn" text="Date début" prefWidth="120"/>
+            <TableColumn fx:id="endDateColumn" text="Date fin" prefWidth="120"/>
+            <TableColumn fx:id="totalPriceColumn" text="Prix total (TND)" prefWidth="120"/>
+            <TableColumn fx:id="statusColumn" text="Statut" prefWidth="120"/>
+        </columns>
+    </TableView>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Annuler la réservation" onAction="#handleCancel"
+                style="-fx-background-color: #ff9800; -fx-text-fill: white;"/>
+        <Button fx:id="refreshButton" text="Actualiser" onAction="#handleRefresh"/>
+    </HBox>
+</VBox>
